@@ -15,7 +15,10 @@ You need to install
 
 3) Create 'images' folder in the same directory where you save comics.py
 
-Type 
+Type ( Default comic Calvin and Hobbes )
 > python comics.py 
+
+For xkcd comics, type
+> python comics.py xkcd
 
 and enjoy! 

@@ -17,11 +17,11 @@ sched.start()
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))   # refers to application_top
 APP_IMAGES = os.path.join(APP_ROOT, 'images')
 
-@sched.interval_schedule(minutes=30)
+@sched.interval_schedule(seconds=10)
 def getcomic():
 
-	if sys.argv[1] != 'xkcd': # default is calvin
-	
+	if len(sys.argv) < 2 or sys.argv[1] != 'xkcd': # default is calvin
+		print 'inside'
 		exist = True
 		while exist:
 			year = random.choice(range(1985,1995))
