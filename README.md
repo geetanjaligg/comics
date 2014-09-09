@@ -21,4 +21,7 @@ Type ( Default comic Calvin and Hobbes )
 For xkcd comics, type
 > python comics.py xkcd
 
+For explosm comics, type
+> python comics.py explosm
+
 and enjoy! 
