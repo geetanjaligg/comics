@@ -17,10 +17,10 @@ sched.start()
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))   # refers to application_top
 APP_IMAGES = os.path.join(APP_ROOT, 'images')
 
-@sched.interval_schedule(seconds=10)
+@sched.interval_schedule(minutes=30)
 def getcomic():
 
-	if len(sys.argv) < 2 or sys.argv[1] != 'xkcd': # default is calvin
+	if len(sys.argv) < 2 or sys.argv[1] == 'calvin': # default is calvin
 		print 'inside'
 		exist = True
 		while exist:
@@ -69,6 +69,22 @@ def getcomic():
 			output.write(res.read())
 			output.close()
 			webbrowser.open(os.path.join(APP_IMAGES, 'xkcd.png'))
+		except Exception, error:
+			print error
+			pass
+
+	elif sys.argv[1] == 'explosm':
+		url = 'http://explosm.net/comics/random/'
+		try:
+			page = urllib2.urlopen(url)
+			soup = BeautifulSoup(page)
+			img = soup.find('div',{'id':'maincontent'}).findAll('img')[5]['src']
+			print img
+			res = urllib2.urlopen(img)
+			output = open(os.path.join(APP_IMAGES, 'explosm.png'), 'wb')
+			output.write(res.read())
+			output.close()
+			webbrowser.open(os.path.join(APP_IMAGES, 'explosm.png'))
 		except Exception, error:
 			print error
 			pass
