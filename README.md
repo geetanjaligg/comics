@@ -7,11 +7,10 @@ Pop a Comic Strip every hour to drive out boredom.
 
 You need to install 
 
-1) [APScheduler ( 2.1.2 )](http://apscheduler.readthedocs.org/en/v2.1.2/index.html#)
+1) [APScheduler ( 3.5.1)](http://apscheduler.readthedocs.org/#)
+2) [beautifulsoup4 ( 4.6.0)] 
 
-> sudo pip install apscheduler==2.1.2
-
-2) [Urllib2](https://docs.python.org/2/library/urllib2.html)
+> sudo pip install -r requirements.txt
 
 3) Create 'images' folder in the same directory where you save comics.py
 

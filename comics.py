@@ -5,10 +5,10 @@ from datetime import datetime
 import random
 import webbrowser
 import os
-from apscheduler.scheduler import Scheduler
+from apscheduler.schedulers.background import BackgroundScheduler as Scheduler
 import time
 import sys
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 sched = Scheduler()
 sched.start()
@@ -17,7 +17,7 @@ sched.start()
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))   # refers to application_top
 APP_IMAGES = os.path.join(APP_ROOT, 'images')
 
-@sched.interval_schedule(minutes=30)
+@sched.scheduled_job(trigger='interval', minutes=30)
 def getcomic():
 
 	if len(sys.argv) < 2 or sys.argv[1] == 'calvin': # default is calvin
