@@ -21,7 +21,7 @@ APP_IMAGES = os.path.join(APP_ROOT, 'images')
 def getcomic():
 
 	if len(sys.argv) < 2 or sys.argv[1] == 'calvin': # default is calvin
-		print 'inside'
+		# print 'inside'
 		exist = True
 		while exist:
 			year = random.choice(range(1985,1995))
@@ -62,8 +62,8 @@ def getcomic():
 		url = 'http://c.xkcd.com/random/comic/'
 		try:
 			page = urllib2.urlopen(url)
-			soup = BeautifulSoup(page)
-			img = soup.find('div',{'id':'comic'}).find('img')['src']
+			soup = BeautifulSoup(page, "html.parser")
+			img = 'http:' + soup.find('div',{'id':'comic'}).find('img')['src']
 			res = urllib2.urlopen(img)
 			output = open(os.path.join(APP_IMAGES, 'xkcd.png'), 'wb')
 			output.write(res.read())
@@ -77,8 +77,8 @@ def getcomic():
 		url = 'http://explosm.net/comics/random/'
 		try:
 			page = urllib2.urlopen(url)
-			soup = BeautifulSoup(page)
-			img = soup.find('div',{'id':'maincontent'}).findAll('img')[5]['src']
+			soup = BeautifulSoup(page, "html.parser")
+			img = 'http:' + soup.find('img',{'id':'main-comic'})['src']
 			print img
 			res = urllib2.urlopen(img)
 			output = open(os.path.join(APP_IMAGES, 'explosm.png'), 'wb')
