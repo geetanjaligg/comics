@@ -63,7 +63,7 @@ def getcomic():
 		try:
 			page = urllib2.urlopen(url)
 			soup = BeautifulSoup(page)
-			img = soup.find('div',{'id':'comic'}).find('img')['src']
+			img = "http:" + soup.find('div',{'id':'comic'}).find('img')['src']
 			res = urllib2.urlopen(img)
 			output = open(os.path.join(APP_IMAGES, 'xkcd.png'), 'wb')
 			output.write(res.read())
@@ -78,7 +78,7 @@ def getcomic():
 		try:
 			page = urllib2.urlopen(url)
 			soup = BeautifulSoup(page)
-			img = soup.find('div',{'id':'maincontent'}).findAll('img')[5]['src']
+			img = "http:" + soup.find('img',{'id':'main-comic'})['src']
 			print img
 			res = urllib2.urlopen(img)
 			output = open(os.path.join(APP_IMAGES, 'explosm.png'), 'wb')
